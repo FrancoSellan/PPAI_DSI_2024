@@ -57,8 +57,11 @@ namespace PPAI_DSI_2024.Controlador
         //public float PuntajeSomelliers { get => puntajeSomelliers; set => puntajeSomelliers = value; }
         //public Vino VinoEj { get => vinoEj; set => vinoEj = value; }
         public PantallaGenerarRankingDeVinos Pantalla { get => pantalla; set => pantalla = value; }
+        public List<Vino> ListaVinos { get => listaVinos; set => listaVinos = value; }
+        public Vino Vino { get => vino; set => vino = value; }
+        public GeneradorDeDatos GeneradorDatos { get => generadorDatos; set => generadorDatos = value; }
 
-
+        // Metodos
         public void opcionGenerarRankingDeVinos(PantallaGenerarRankingDeVinos pantalla)
         {
             pantalla.pedirDatosRanking();
@@ -90,7 +93,7 @@ namespace PPAI_DSI_2024.Controlador
             if (fechaDesde != null && (fechaHasta > fechaDesde) && tipoResena == "De somellier" && tipoVisualizacion == "Excel")
             {
                 MessageBox.Show("Reporte confirmado!");
-                Console.WriteLine(listaVinos);
+                // buscarVinoConResenasEnPeriodo();
             } else if (tipoResena != "De somellier" && tipoVisualizacion != "Excel")
             {
                 MessageBox.Show("No hay reseñas ni visualizacion disponibles");
@@ -104,11 +107,18 @@ namespace PPAI_DSI_2024.Controlador
             
         }
 
-        
 
         //public void buscarVinoConResenasEnPeriodo()
         //{
-        //    listaVinos = 
+        //    List<Vino> vinos = generadorDatos.getVinos();
+        //    for (int i = 0; i < vinos.Count; i++)
+        //    {
+        //        if (vinos[i].tenesResenasDeTipoEnPeriodo())
+        //        {
+
+        //        }
+        //    }
+
         //}
     }
 }
