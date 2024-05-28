@@ -77,14 +77,16 @@ namespace PPAI_DSI_2024
             return Convert.ToString(cmbTiposVisualizacion.Text);
         }
 
-        private void btnValidarPeriodo_Click(object sender, EventArgs e)
-        {
-            ValidarPeriodo(tomarFechaDesde(), tomarFechaHasta());
-        }
-
         public void pedirDatosRanking()
         {
             btnConfirmacionGenReporte.Enabled = true;
+        }
+
+        private void btnIngresarFechas_Click(object sender, EventArgs e)
+        {
+            fechaDesde = tomarFechaDesde();
+            fechaHasta = tomarFechaHasta();
+            ValidarPeriodo(tomarFechaDesde(), tomarFechaHasta());
         }
 
         private void ValidarPeriodo(DateTime fechaDesde, DateTime fechaHasta)
@@ -92,6 +94,9 @@ namespace PPAI_DSI_2024
             if (fechaDesde > fechaHasta)
             {
                 MessageBox.Show("El periodo ingresado es incorrecto");
+            } else
+            {
+                MessageBox.Show("Periodo correcto");
             }
         }
 
@@ -100,5 +105,7 @@ namespace PPAI_DSI_2024
         {
             gestor.tomarConfirmacionGenReporte();
         }
+
+        
     }
 }

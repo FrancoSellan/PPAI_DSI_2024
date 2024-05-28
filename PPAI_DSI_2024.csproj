@@ -59,6 +59,7 @@
       <DependentUpon>PantallaGenerarRankingDeVinos.cs</DependentUpon>
     </Compile>
     <Compile Include="Controlador\GestorGenerarRankingDeVinos.cs" />
+    <Compile Include="Datos\GeneradorDeDatos.cs" />
     <Compile Include="Entidades\Bodega.cs" />
     <Compile Include="Entidades\Pais.cs" />
     <Compile Include="Entidades\Provincia.cs" />

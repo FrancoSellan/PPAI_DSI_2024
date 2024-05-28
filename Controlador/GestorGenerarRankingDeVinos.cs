@@ -1,4 +1,5 @@
-﻿using PPAI_DSI_2024.Entidades;
+﻿using PPAI_DSI_2024.Datos;
+using PPAI_DSI_2024.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,12 +17,15 @@ namespace PPAI_DSI_2024.Controlador
         private DateTime fechaHasta;
         private string tipoResena;
         private string tipoVisualizacion;
-        private Vino vinoEj;
-        private Bodega BodegaVino;
-        private RegionVitivinicola regionBodega;
-        private Pais paisBodega;
-        private Varietal varietalVino;
-        private float puntajeSomelliers;
+        private Vino vino;
+        private List<Vino> listaVinos = new List<Vino>();
+        private GeneradorDeDatos generadorDatos;
+        //private Vino vinoEj;
+        //private Bodega BodegaVino;
+        //private RegionVitivinicola regionBodega;
+        //private Pais paisBodega;
+        //private Varietal varietalVino;
+        //private float puntajeSomelliers;
 
         // Constructor
         public GestorGenerarRankingDeVinos (PantallaGenerarRankingDeVinos pantalla, DateTime fechaDesde, DateTime fechaHasta, string tipoResena, string tipoVisualizacion)
@@ -31,6 +35,8 @@ namespace PPAI_DSI_2024.Controlador
             this.fechaHasta = fechaHasta;
             this.tipoResena = tipoResena;
             this.tipoVisualizacion = tipoVisualizacion;
+            this.vino = new Vino();
+            this.generadorDatos = new GeneradorDeDatos();
             //this.vinoEj = vino;
             //this.BodegaVino = BodegaVino;
             //this.regionBodega = regionBodega;
@@ -44,13 +50,14 @@ namespace PPAI_DSI_2024.Controlador
         public DateTime FechaHasta { get => fechaHasta; set => fechaHasta = value; }
         public string TipoResena { get => tipoResena; set => tipoResena = value; }
         public string TipoVisualizacion { get => tipoVisualizacion; set => tipoVisualizacion = value; }
-        public Bodega NombreBodegaVino { get => BodegaVino; set => BodegaVino = value; }
-        public RegionVitivinicola RegionBodega { get => regionBodega; set => regionBodega = value; }
-        public Pais PaisBodega { get => paisBodega; set => paisBodega = value; }
-        public Varietal VarietalVino { get => varietalVino; set => varietalVino = value; }
-        public float PuntajeSomelliers { get => puntajeSomelliers; set => puntajeSomelliers = value; }
-        public Vino VinoEj { get => vinoEj; set => vinoEj = value; }
+        //public Bodega NombreBodegaVino { get => BodegaVino; set => BodegaVino = value; }
+        //public RegionVitivinicola RegionBodega { get => regionBodega; set => regionBodega = value; }
+        //public Pais PaisBodega { get => paisBodega; set => paisBodega = value; }
+        //public Varietal VarietalVino { get => varietalVino; set => varietalVino = value; }
+        //public float PuntajeSomelliers { get => puntajeSomelliers; set => puntajeSomelliers = value; }
+        //public Vino VinoEj { get => vinoEj; set => vinoEj = value; }
         public PantallaGenerarRankingDeVinos Pantalla { get => pantalla; set => pantalla = value; }
+
 
         public void opcionGenerarRankingDeVinos(PantallaGenerarRankingDeVinos pantalla)
         {
@@ -83,11 +90,25 @@ namespace PPAI_DSI_2024.Controlador
             if (fechaDesde != null && (fechaHasta > fechaDesde) && tipoResena == "De somellier" && tipoVisualizacion == "Excel")
             {
                 MessageBox.Show("Reporte confirmado!");
-            } else
+                Console.WriteLine(listaVinos);
+            } else if (tipoResena != "De somellier" && tipoVisualizacion != "Excel")
             {
-                MessageBox.Show("Datos ingresados incorrectamente");
-            }
+                MessageBox.Show("No hay reseñas ni visualizacion disponibles");
+            } else if (tipoVisualizacion != "Excel")
+            {
+                MessageBox.Show("No hay tipo de visualizacion disponible");
+            } else if (tipoResena != "De somellier")
+            {
+                MessageBox.Show("No hay reseñas disponibles");
+            } 
             
         }
+
+        
+
+        //public void buscarVinoConResenasEnPeriodo()
+        //{
+        //    listaVinos = 
+        //}
     }
 }

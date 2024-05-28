@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.mskFechaDesde = new System.Windows.Forms.MaskedTextBox();
             this.mskFechaHasta = new System.Windows.Forms.MaskedTextBox();
-            this.btnValidarPeriodo = new System.Windows.Forms.Button();
+            this.btnIngresarFechas = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbResenas = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -67,15 +67,15 @@
             this.mskFechaHasta.TabIndex = 2;
             this.mskFechaHasta.ValidatingType = typeof(System.DateTime);
             // 
-            // btnValidarPeriodo
+            // btnIngresarFechas
             // 
-            this.btnValidarPeriodo.Location = new System.Drawing.Point(339, 38);
-            this.btnValidarPeriodo.Name = "btnValidarPeriodo";
-            this.btnValidarPeriodo.Size = new System.Drawing.Size(136, 24);
-            this.btnValidarPeriodo.TabIndex = 3;
-            this.btnValidarPeriodo.Text = "Validar periodo";
-            this.btnValidarPeriodo.UseVisualStyleBackColor = true;
-            this.btnValidarPeriodo.Click += new System.EventHandler(this.btnValidarPeriodo_Click);
+            this.btnIngresarFechas.Location = new System.Drawing.Point(339, 38);
+            this.btnIngresarFechas.Name = "btnIngresarFechas";
+            this.btnIngresarFechas.Size = new System.Drawing.Size(136, 24);
+            this.btnIngresarFechas.TabIndex = 3;
+            this.btnIngresarFechas.Text = "Ingresar fechas";
+            this.btnIngresarFechas.UseVisualStyleBackColor = true;
+            this.btnIngresarFechas.Click += new System.EventHandler(this.btnIngresarFechas_Click);
             // 
             // label2
             // 
@@ -135,7 +135,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbResenas);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnValidarPeriodo);
+            this.Controls.Add(this.btnIngresarFechas);
             this.Controls.Add(this.mskFechaHasta);
             this.Controls.Add(this.mskFechaDesde);
             this.Controls.Add(this.label1);
@@ -153,7 +153,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MaskedTextBox mskFechaDesde;
         private System.Windows.Forms.MaskedTextBox mskFechaHasta;
-        private System.Windows.Forms.Button btnValidarPeriodo;
+        private System.Windows.Forms.Button btnIngresarFechas;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbResenas;
         private System.Windows.Forms.Label label3;
