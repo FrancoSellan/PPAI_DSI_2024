@@ -62,5 +62,10 @@ namespace PPAI_DSI_2024.Entidades
             }
 
         }
+
+        public int getPuntaje()
+        {
+            return puntaje;
+        }
     }
 }

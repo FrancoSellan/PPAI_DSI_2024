@@ -106,5 +106,28 @@ namespace PPAI_DSI_2024.Entidades
             return descripcion;
         }
 
+        public int calcularPuntajeDeSomellierEnPeriodo(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            int cantResenas = 0;
+            int sumaPuntajes = 0;
+            for (int i = 0; i < resenas.Count; i++)
+            {
+                if (resenas[i].SosDePeriodo(fechaDesde, fechaHasta) && resenas[i].essPremium())
+                {
+                    cantResenas++;
+                    sumaPuntajes += resenas[i].getPuntaje();
+                    
+                } 
+            }
+
+            int promedio = calcularPuntajePromedio(sumaPuntajes, cantResenas);
+            return promedio;
+        }
+
+        public int calcularPuntajePromedio(int sumaPuntajes, int cantResenas)
+        {
+            int promedio = sumaPuntajes / cantResenas;
+            return promedio;
+        }
     }
 }

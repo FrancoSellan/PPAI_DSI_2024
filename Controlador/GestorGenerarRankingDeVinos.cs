@@ -108,21 +108,19 @@ namespace PPAI_DSI_2024.Controlador
         public void buscarVinosConResenasEnPeriodo(DateTime fechaDesde, DateTime fechaHasta)
         {
             List<List<string>> vinosParaExcel = new List<List<string>>();
-            List<string> vinoParaExcel = new List<string>();
+            // List<string> vinoParaExcel = new List<string>();
             List<Vino> vinosQueCumplenFiltros = new List<Vino>();
             List<Vino> vinos = generadorDatos.getVinos();
             for (int i = 0; i < vinos.Count; i++)
             {
                 if (vinos[i].tenesResenaEnPeriodo(fechaDesde, fechaHasta))
                 {
+                    List<string> vinoParaExcel = new List<string>();
                     vinosQueCumplenFiltros.Add(vinos[i]);
                     string nombreVino = vinos[i].getNombre();
                     int precioVino = vinos[i].getPrecio();
-                    // string nombreBodega = vinos[i].buscarInforBodega();
-                    // List<string> vinoParaExcel = { nombreVino, precioVino.ToString()};
                     vinoParaExcel.Add(nombreVino);
                     vinoParaExcel.Add(precioVino.ToString());
-
                     vinos[i].buscarInforBodega(vinoParaExcel);
                     string descVarietal = vinos[i].buscarVarietal();
                     vinoParaExcel.Add(descVarietal);
@@ -131,6 +129,8 @@ namespace PPAI_DSI_2024.Controlador
                 }
 
             }
+            calcularPuntajeDeSomellierEnPeriodo(vinosParaExcel, vinosQueCumplenFiltros);
+
             //// Metodo para acceder al arreglo dentro del otro arreglo (sirve para despues)
             //for (int i = 0; i < vinosParaExcel.Count; i++)
             //{
@@ -141,6 +141,26 @@ namespace PPAI_DSI_2024.Controlador
             //    Console.WriteLine(vinosParaExcel[i][4]);
             //    Console.WriteLine(vinosParaExcel[i][5]);
             //}
+        }
+
+        public void calcularPuntajeDeSomellierEnPeriodo(List<List<string>> vinosParaExcel, List<Vino> vinosQueCumplenFiltros)
+        {
+            for (int i =0; i < vinosQueCumplenFiltros.Count; i++)
+            {
+                int puntajeResena = vinosQueCumplenFiltros[i].calcularPuntajeDeSomellierEnPeriodo(fechaDesde, fechaHasta);
+                vinosParaExcel[i].Add(puntajeResena.ToString());
+            }
+
+            // Metodo para acceder al arreglo dentro del otro arreglo (sirve para despues)
+            for (int i = 0; i < vinosParaExcel.Count; i++)
+            {
+                Console.WriteLine(vinosParaExcel[i][0]);
+                Console.WriteLine(vinosParaExcel[i][1]);
+                Console.WriteLine(vinosParaExcel[i][2]);
+                Console.WriteLine(vinosParaExcel[i][3]);
+                Console.WriteLine(vinosParaExcel[i][4]);
+                Console.WriteLine(vinosParaExcel[i][5]);
+            }
         }
 
         public bool validarFechaResena(DateTime fechaResena)
