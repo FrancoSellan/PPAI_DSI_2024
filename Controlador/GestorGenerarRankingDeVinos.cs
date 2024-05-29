@@ -89,8 +89,7 @@ namespace PPAI_DSI_2024.Controlador
 
             if (fechaDesde != null && (fechaHasta > fechaDesde) && tipoResena == "De somellier" && tipoVisualizacion == "Excel")
             {
-                MessageBox.Show("Reporte confirmado!");
-                Console.WriteLine(listaVinos);
+                MessageBox.Show("Reporte confirmado!");    
             } else if (tipoResena != "De somellier" && tipoVisualizacion != "Excel")
             {
                 MessageBox.Show("No hay reseñas ni visualizacion disponibles");
@@ -106,9 +105,5 @@ namespace PPAI_DSI_2024.Controlador
 
         
 
-        //public void buscarVinoConResenasEnPeriodo()
-        //{
-        //    listaVinos = 
-        //}
     }
 }

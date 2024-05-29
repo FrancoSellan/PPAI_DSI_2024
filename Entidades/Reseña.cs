@@ -13,9 +13,10 @@ namespace PPAI_DSI_2024.Entidades
         private bool esPremium;
         private DateTime fechaReseña;
         private int puntaje;
+        private Vino vino;
 
         // Constructor
-        public Reseña(string comentario, bool esPremium, DateTime fechaReseña, int puntaje)
+        public Reseña(string comentario, bool esPremium, DateTime fechaReseña, int puntaje, Vino vino)
         {
             this.comentario = comentario;
             this.esPremium = esPremium;
@@ -28,5 +29,6 @@ namespace PPAI_DSI_2024.Entidades
         public bool EsPremium { get => esPremium; set => esPremium = value; }
         public DateTime FechaReseña { get => fechaReseña; set => fechaReseña = value; }
         public int Puntaje { get => puntaje; set => puntaje = value; }
+        public Vino Vino { get => vino; set => vino = value; }
     }
 }
