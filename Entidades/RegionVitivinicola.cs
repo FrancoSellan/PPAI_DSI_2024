@@ -25,5 +25,18 @@ namespace PPAI_DSI_2024.Entidades
         public string Descripcion { get => descripcion; set => descripcion = value; }
         public string Nombre { get => nombre; set => nombre = value; }
         public Provincia Provincia { get => provincia; set => provincia = value; }
+
+        // Metodos
+        public string getNombre()
+        {
+            return nombre;
+        }
+
+        public void obtenerPais(List<string> vinoParaExcel)
+        {
+            provincia.obtenerPais(vinoParaExcel);
+        }
     }
+
+    
 }

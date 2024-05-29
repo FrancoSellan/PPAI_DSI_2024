@@ -20,6 +20,11 @@ namespace PPAI_DSI_2024.Entidades
         // Metodos get y set
         public string Nombre { get => nombre; set => nombre = value; }
 
+        // Metodos
+        public string getNombre()
+        {
+            return nombre;
+        }
 
     }
 }

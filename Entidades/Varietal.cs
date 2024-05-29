@@ -22,5 +22,11 @@ namespace PPAI_DSI_2024.Entidades
         // Metodos get y set
         public string Descripcion { get => descripcion; set => descripcion = value; }
         public double PorcentajeComposicion { get => porcentajeComposicion; set => porcentajeComposicion = value; }
+
+        // Metodos
+        public string getDescripcion()
+        {
+            return descripcion;
+        }
     }
 }

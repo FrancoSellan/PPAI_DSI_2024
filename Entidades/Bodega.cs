@@ -45,5 +45,12 @@ namespace PPAI_DSI_2024.Entidades
         {
             return nombre;
         }
+
+        public void obtenerRegionYPais(List<string> vinoParaExcel)
+        {
+            string nombreRegion = region.getNombre();
+            vinoParaExcel.Add(nombreRegion);
+            region.obtenerPais(vinoParaExcel);
+        }
     }
 }

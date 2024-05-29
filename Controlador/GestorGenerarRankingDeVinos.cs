@@ -107,29 +107,40 @@ namespace PPAI_DSI_2024.Controlador
 
         public void buscarVinosConResenasEnPeriodo(DateTime fechaDesde, DateTime fechaHasta)
         {
-            List<string[]> vinosParaExcel = new List<string[]>();
+            List<List<string>> vinosParaExcel = new List<List<string>>();
+            List<string> vinoParaExcel = new List<string>();
             List<Vino> vinosQueCumplenFiltros = new List<Vino>();
-            string nombreVino;
-            int precioVino;
             List<Vino> vinos = generadorDatos.getVinos();
             for (int i = 0; i < vinos.Count; i++)
             {
                 if (vinos[i].tenesResenaEnPeriodo(fechaDesde, fechaHasta))
                 {
                     vinosQueCumplenFiltros.Add(vinos[i]);
-                    nombreVino = vinos[i].getNombre();
-                    precioVino = vinos[i].getPrecio();
-                    vinos[i].buscarInforBodega();
+                    string nombreVino = vinos[i].getNombre();
+                    int precioVino = vinos[i].getPrecio();
+                    // string nombreBodega = vinos[i].buscarInforBodega();
+                    // List<string> vinoParaExcel = { nombreVino, precioVino.ToString()};
+                    vinoParaExcel.Add(nombreVino);
+                    vinoParaExcel.Add(precioVino.ToString());
 
-                    string[] vinoParaExcel = { nombreVino, precioVino.ToString() };
-
+                    vinos[i].buscarInforBodega(vinoParaExcel);
+                    string descVarietal = vinos[i].buscarVarietal();
+                    vinoParaExcel.Add(descVarietal);
                     vinosParaExcel.Add(vinoParaExcel);
 
                 }
 
             }
-
-            Console.WriteLine(vinosQueCumplenFiltros.Count);
+            //// Metodo para acceder al arreglo dentro del otro arreglo (sirve para despues)
+            //for (int i = 0; i < vinosParaExcel.Count; i++)
+            //{
+            //    Console.WriteLine(vinosParaExcel[i][0]);
+            //    Console.WriteLine(vinosParaExcel[i][1]);
+            //    Console.WriteLine(vinosParaExcel[i][2]);
+            //    Console.WriteLine(vinosParaExcel[i][3]);
+            //    Console.WriteLine(vinosParaExcel[i][4]);
+            //    Console.WriteLine(vinosParaExcel[i][5]);
+            //}
         }
 
         public bool validarFechaResena(DateTime fechaResena)

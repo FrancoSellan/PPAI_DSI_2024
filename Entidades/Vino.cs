@@ -91,9 +91,19 @@ namespace PPAI_DSI_2024.Entidades
             return precioARS;
         }
 
-        public string buscarInforBodega()
+        public void buscarInforBodega(List<string> vinoParaExcel)
         {
-           return bodega.getNombre();
+
+            string nombreBodega = bodega.getNombre();
+            vinoParaExcel.Add(nombreBodega);
+            bodega.obtenerRegionYPais(vinoParaExcel);
+
+        }
+
+        public string buscarVarietal()
+        {
+            string descripcion = varietal.getDescripcion();
+            return descripcion;
         }
 
     }
