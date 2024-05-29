@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PPAI_DSI_2024.Controlador;
+using System;
 using System.Collections.Generic;
 using System.Drawing.Text;
 using System.Linq;
@@ -16,9 +17,14 @@ namespace PPAI_DSI_2024.Entidades
         private string nombre;
         private int notaDeCataBodega;
         private int precioARS;
+        private GestorGenerarRankingDeVinos gestor;
+        public List<Reseña> resenas;
+        private List<Reseña> resenasFiltradas;
+        private Bodega bodega;
+        private Varietal varietal;
 
         // Constructor
-        public Vino (double añada, DateTime fechaActualizacion, string imagenEtiqueta, string nombre, int notaDeCataBodega, int precioARS)
+        public Vino (double añada, DateTime fechaActualizacion, string imagenEtiqueta, string nombre, int notaDeCataBodega, int precioARS, List<Reseña> resenas, Bodega bodega, Varietal varietal)
         {
             this.añada = añada;
             this.fechaActualizacion = fechaActualizacion;
@@ -26,6 +32,9 @@ namespace PPAI_DSI_2024.Entidades
             this.nombre = nombre;
             this.notaDeCataBodega = notaDeCataBodega;
             this.precioARS = precioARS;
+            this.resenas = resenas;
+            this.bodega = bodega;
+            this.varietal = varietal;
         }
 
         public Vino ()
@@ -40,13 +49,52 @@ namespace PPAI_DSI_2024.Entidades
         public string Nombre { get => nombre; set => nombre = value; }
         public int NotaDeCataBodega { get => notaDeCataBodega; set => notaDeCataBodega = value; }
         public int PrecioARS { get => precioARS; set => precioARS = value; }
+        public List<Reseña> Resenas { get => resenas; set => resenas = value; }
+        public Bodega Bodega { get => bodega; set => bodega = value; }
+        public Varietal Varietal { get => varietal; set => varietal = value; }
 
-        //public void cargarVinos()
-        //{
-        //    for (int i = 0; i == 5; i++)
-        //    {
-        //        Vino vino[i] = new Vino();
-        //    }
-        //}
+        // Metodos
+        public bool tenesResenaEnPeriodo(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            
+
+            for (int i = 0; i < resenas.Count; i++)
+            {
+                if (resenas[i].SosDePeriodo(fechaDesde, fechaHasta) && resenas[i].essPremium())
+                {
+                    return true;
+                }
+
+            }
+            return false;
+        }
+
+        public bool validarFechaResena(DateTime fechaResena)
+        {
+            if (gestor.validarFechaResena(fechaResena))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public string getNombre()
+        {
+            return nombre;
+        }
+
+        public int getPrecio()
+        {
+            return precioARS;
+        }
+
+        public string buscarInforBodega()
+        {
+           return bodega.getNombre();
+        }
+
     }
 }

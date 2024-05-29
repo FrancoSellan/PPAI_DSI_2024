@@ -38,5 +38,12 @@ namespace PPAI_DSI_2024.Entidades
         public string PeriodoActualizacion { get => periodoActualizacion; set => periodoActualizacion = value; }
         public string Historia { get => historia; set => historia = value; }
         public RegionVitivinicola Region { get => region; set => region = value; }
+
+        // Metodos
+
+        public string getNombre()
+        {
+            return nombre;
+        }
     }
 }

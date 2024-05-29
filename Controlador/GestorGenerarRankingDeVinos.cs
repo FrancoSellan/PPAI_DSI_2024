@@ -89,7 +89,9 @@ namespace PPAI_DSI_2024.Controlador
 
             if (fechaDesde != null && (fechaHasta > fechaDesde) && tipoResena == "De somellier" && tipoVisualizacion == "Excel")
             {
-                MessageBox.Show("Reporte confirmado!");    
+                MessageBox.Show("Reporte confirmado!");
+               buscarVinosConResenasEnPeriodo(fechaDesde, fechaHasta);
+
             } else if (tipoResena != "De somellier" && tipoVisualizacion != "Excel")
             {
                 MessageBox.Show("No hay reseñas ni visualizacion disponibles");
@@ -99,11 +101,48 @@ namespace PPAI_DSI_2024.Controlador
             } else if (tipoResena != "De somellier")
             {
                 MessageBox.Show("No hay reseñas disponibles");
-            } 
+            }
             
         }
 
-        
+        public void buscarVinosConResenasEnPeriodo(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            List<string[]> vinosParaExcel = new List<string[]>();
+            List<Vino> vinosQueCumplenFiltros = new List<Vino>();
+            string nombreVino;
+            int precioVino;
+            List<Vino> vinos = generadorDatos.getVinos();
+            for (int i = 0; i < vinos.Count; i++)
+            {
+                if (vinos[i].tenesResenaEnPeriodo(fechaDesde, fechaHasta))
+                {
+                    vinosQueCumplenFiltros.Add(vinos[i]);
+                    nombreVino = vinos[i].getNombre();
+                    precioVino = vinos[i].getPrecio();
+                    vinos[i].buscarInforBodega();
 
+                    string[] vinoParaExcel = { nombreVino, precioVino.ToString() };
+
+                    vinosParaExcel.Add(vinoParaExcel);
+
+                }
+
+            }
+
+            Console.WriteLine(vinosQueCumplenFiltros.Count);
+        }
+
+        public bool validarFechaResena(DateTime fechaResena)
+        {
+            tomarSeleccionFechaDesdeYHasta();
+            if (fechaDesde < fechaResena && fechaResena < fechaHasta)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

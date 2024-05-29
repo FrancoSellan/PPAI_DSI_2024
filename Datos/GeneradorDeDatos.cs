@@ -19,33 +19,6 @@ namespace PPAI_DSI_2024.Datos
 
         public GeneradorDeDatos()
         {
-            // Regiones
-            RegionVitivinicola region1 = new RegionVitivinicola("descripcion1", "region1");
-            RegionVitivinicola region2 = new RegionVitivinicola("descripcion2", "region2");
-            RegionVitivinicola region3 = new RegionVitivinicola("descripcion3", "region3");
-            RegionVitivinicola region4 = new RegionVitivinicola("descripcion4", "region4");
-            RegionVitivinicola region5 = new RegionVitivinicola("descripcion5", "region5");
-
-            regiones = new List<RegionVitivinicola>() { region1, region2, region3, region4, region5 };
-
-
-            // Bodegas
-            Bodega bodega1 = new Bodega("40.7128,-73.5000", "descripcion1", Convert.ToDateTime("20/09/2020"), "bodega1", "20/09/2019 - 20/09/2020", "historia1", region3);
-            Bodega bodega2 = new Bodega("40.7128,-73.5000", "descripcion2", Convert.ToDateTime("20/09/2020"), "bodega1", "20/09/2019 - 20/09/2020", "historia2", region2);
-            Bodega bodega3 = new Bodega("40.7128,-73.5000", "descripcion3", Convert.ToDateTime("20/09/2020"), "bodega1", "20/09/2019 - 20/09/2020", "historia3", region1);
-            Bodega bodega4 = new Bodega("40.7128,-73.5000", "descripcion4", Convert.ToDateTime("20/09/2020"), "bodega1", "20/09/2019 - 20/09/2020", "historia4", region4);
-            Bodega bodega5 = new Bodega("40.7128,-73.5000", "descripcion5", Convert.ToDateTime("20/09/2020"), "bodega1", "20/09/2019 - 20/09/2020", "historia5", region5);
-
-            bodegas = new List<Bodega>() { bodega1, bodega2, bodega3, bodega4, bodega5 };
-
-            // Varietal
-            Varietal varietal1 = new Varietal("descripcion1", 40);
-            Varietal varietal2 = new Varietal("descripcion2", 62);
-            Varietal varietal3 = new Varietal("descripcion3", 88);
-            Varietal varietal4 = new Varietal("descripcion4", 11);
-
-            varietales = new List<Varietal>() { varietal1, varietal2, varietal3, varietal4 };
-
             // Pais
             Pais pais1 = new Pais("Argentina");
 
@@ -58,14 +31,41 @@ namespace PPAI_DSI_2024.Datos
 
             provincias = new List<Provincia>() { provincia1, provincia2, provincia3 };
 
+            // Regiones
+            RegionVitivinicola region1 = new RegionVitivinicola("descripcion1", "region1", provincia1);
+            RegionVitivinicola region2 = new RegionVitivinicola("descripcion2", "region2", provincia2);
+            RegionVitivinicola region3 = new RegionVitivinicola("descripcion3", "region3", provincia3);
+            RegionVitivinicola region4 = new RegionVitivinicola("descripcion4", "region4", provincia1);
+            RegionVitivinicola region5 = new RegionVitivinicola("descripcion5", "region5", provincia2);
+
+            regiones = new List<RegionVitivinicola>() { region1, region2, region3, region4, region5 };
+
+
+            // Bodegas
+            Bodega bodega1 = new Bodega("40.7128,-73.5000", "descripcion1", Convert.ToDateTime("20/09/2020"), "bodega1", "20/09/2019 - 20/09/2020", "historia1", region3);
+            Bodega bodega2 = new Bodega("40.7128,-73.5000", "descripcion2", Convert.ToDateTime("20/09/2020"), "bodega2", "20/09/2019 - 20/09/2020", "historia2", region2);
+            Bodega bodega3 = new Bodega("40.7128,-73.5000", "descripcion3", Convert.ToDateTime("20/09/2020"), "bodega3", "20/09/2019 - 20/09/2020", "historia3", region1);
+            Bodega bodega4 = new Bodega("40.7128,-73.5000", "descripcion4", Convert.ToDateTime("20/09/2020"), "bodega4", "20/09/2019 - 20/09/2020", "historia4", region4);
+            Bodega bodega5 = new Bodega("40.7128,-73.5000", "descripcion5", Convert.ToDateTime("20/09/2020"), "bodega5", "20/09/2019 - 20/09/2020", "historia5", region5);
+
+            bodegas = new List<Bodega>() { bodega1, bodega2, bodega3, bodega4, bodega5 };
+
+            // Varietal
+            Varietal varietal1 = new Varietal("descripcion1", 40);
+            Varietal varietal2 = new Varietal("descripcion2", 62);
+            Varietal varietal3 = new Varietal("descripcion3", 88);
+            Varietal varietal4 = new Varietal("descripcion4", 11);
+
+            varietales = new List<Varietal>() { varietal1, varietal2, varietal3, varietal4 };
+
             // Vinos
-            Vino vino1 = new Vino(2003, Convert.ToDateTime("14/04/2005"), "imagen1", "vino1", 7, 11000);
-            Vino vino2 = new Vino(2010, Convert.ToDateTime("20/08/2011"), "imagen2", "vino2", 3, 5000);
-            Vino vino3 = new Vino(2015, Convert.ToDateTime("14/04/2050"), "imagen3", "vino3", 10, 20000);
-            Vino vino4 = new Vino(2006, Convert.ToDateTime("14/04/2005"), "imagen4", "vino4", 9, 18000);
-            Vino vino5 = new Vino(2000, Convert.ToDateTime("14/04/2005"), "imagen5", "vino5", 2, 2000);
-            Vino vino6 = new Vino(2002, Convert.ToDateTime("14/04/2005"), "imagen6", "vino6", 4, 5500);
-            Vino vino7 = new Vino(2019, Convert.ToDateTime("14/04/2005"), "imagen7", "vino7", 5, 6000);
+            Vino vino1 = new Vino(2003, Convert.ToDateTime("14/04/2005"), "imagen1", "vino1", 7, 11000, new List<Reseña>(), bodega3, varietal1);
+            Vino vino2 = new Vino(2010, Convert.ToDateTime("20/08/2011"), "imagen2", "vino2", 3, 5000, new List<Reseña>(), bodega4, varietal2);
+            Vino vino3 = new Vino(2015, Convert.ToDateTime("14/04/2050"), "imagen3", "vino3", 10, 20000, new List<Reseña>(), bodega1, varietal3);
+            Vino vino4 = new Vino(2006, Convert.ToDateTime("14/04/2005"), "imagen4", "vino4", 9, 18000, new List<Reseña>(), bodega5, varietal4);
+            Vino vino5 = new Vino(2000, Convert.ToDateTime("14/04/2005"), "imagen5", "vino5", 2, 2000, new List<Reseña>(), bodega1, varietal1);
+            Vino vino6 = new Vino(2002, Convert.ToDateTime("14/04/2005"), "imagen6", "vino6", 4, 5500, new List<Reseña>(), bodega2, varietal2);
+            Vino vino7 = new Vino(2019, Convert.ToDateTime("14/04/2005"), "imagen7", "vino7", 5, 6000, new List<Reseña>(), bodega5, varietal3);
 
             listaVinos = new List<Vino>() { vino1, vino2, vino3, vino4, vino5, vino6, vino7 };
 
@@ -82,6 +82,18 @@ namespace PPAI_DSI_2024.Datos
             Reseña resena10 = new Reseña("Mal vino", true, Convert.ToDateTime("24/06/2023"), 4, vino7);
 
             resenas = new List<Reseña>() { resena1, resena2, resena3, resena4, resena5, resena6, resena7, resena8, resena9, resena10 };
+
+            vino3.resenas.Add(resena1);
+            vino4.resenas.Add(resena2);
+            vino2.resenas.Add(resena3);
+            vino5.resenas.Add(resena4);
+            vino3.resenas.Add(resena5);
+            vino5.resenas.Add(resena6);
+            vino3.resenas.Add(resena7);
+            vino4.resenas.Add(resena8);
+            vino3.resenas.Add(resena9);
+            vino7.resenas.Add(resena10);
+
         }
 
         public List<Vino> getVinos()
