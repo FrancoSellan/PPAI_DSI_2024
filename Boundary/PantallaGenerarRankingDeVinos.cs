@@ -39,8 +39,13 @@ namespace PPAI_DSI_2024
         public string TipoResena { get => tipoResena; set => tipoResena = value; }
         public string TipoVisualizacion { get => tipoVisualizacion; set => tipoVisualizacion = value; }
         
-
+        
         public PantallaGenerarRankingDeVinos()
+        {
+            opcionGenerarRankingDeVinos();
+        }
+
+        public void opcionGenerarRankingDeVinos()
         {
             habilitarVentana();
         }
@@ -49,22 +54,45 @@ namespace PPAI_DSI_2024
             InitializeComponent();
         }
 
+
+
         private void PantallaGenerarRankingDeVinos_Load(object sender, EventArgs e)
         {
             interfazExcel pantallaExcel = new interfazExcel();
             gestor = new GestorGenerarRankingDeVinos(this, fechaDesde, fechaHasta, tipoResena, tipoVisualizacion, pantallaExcel);
             gestor.opcionGenerarRankingDeVinos(this);
+            solicitarSeleccionTipoResena();           
+            solicitarSeleccionTipoVisualizacion();
+            solicitarConfirmacionGenReporte();
+        }
+
+        public void solicitarSeleccionTipoResena()
+        {
             cmbResenas.Items.Add("Normal");
             cmbResenas.Items.Add("De somellier");
             cmbResenas.Items.Add("De amigos");
+        }
+
+        public void solicitarSeleccionTipoVisualizacion()
+        {
             cmbTiposVisualizacion.Items.Add("PDF");
             cmbTiposVisualizacion.Items.Add("Excel");
             cmbTiposVisualizacion.Items.Add("pantalla");
         }
 
-        public DateTime tomarFechaDesde()
+        public void solicitarSeleccionFechaDesdeYHasta()
         {
-            return Convert.ToDateTime(mskFechaDesde.Text);
+            btnIngresarFechas.Enabled = true;
+        }
+
+        public void solicitarConfirmacionGenReporte()
+        {
+            btnConfirmacionGenReporte.Enabled = true;
+        }
+
+        public DateTime tomarFechaDesde()
+        {         
+                return Convert.ToDateTime(mskFechaDesde.Text);                     
         }
 
         public DateTime tomarFechaHasta()
@@ -80,36 +108,61 @@ namespace PPAI_DSI_2024
         public string tomarTipoVisualizacion()
         {
             return Convert.ToString(cmbTiposVisualizacion.Text);
-        }
-
-        public void pedirDatosRanking()
-        {
-            btnConfirmacionGenReporte.Enabled = true;
-        }
+        }     
 
         private void btnIngresarFechas_Click(object sender, EventArgs e)
         {
-            fechaDesde = tomarFechaDesde();
-            fechaHasta = tomarFechaHasta();
-            ValidarPeriodo(tomarFechaDesde(), tomarFechaHasta());
+            if (validarFechas())
+            {
+                fechaDesde = tomarFechaDesde();
+                fechaHasta = tomarFechaHasta();
+                ValidarPeriodo(tomarFechaDesde(), tomarFechaHasta());
+            } else
+            {
+                MessageBox.Show("Ingrese un periodo correcto");
+            }            
+            
         }
+
+        public bool validarFechas()
+        {
+            if (!mskFechaDesde.MaskCompleted && !mskFechaHasta.MaskCompleted)
+            {
+                return false;
+            } else if (mskFechaDesde.MaskCompleted && !mskFechaHasta.MaskCompleted)
+            {
+                return false;
+            } else if (!mskFechaDesde.MaskCompleted &&  mskFechaHasta.MaskCompleted)
+            {
+                return false;
+            } else
+            {
+                return true;
+            }
+        }
+
 
         private void ValidarPeriodo(DateTime fechaDesde, DateTime fechaHasta)
         {
-            if (fechaDesde > fechaHasta)
+            if (fechaDesde >= fechaHasta)
             {
                 MessageBox.Show("El periodo ingresado es incorrecto");
             } else
             {
                 MessageBox.Show("Periodo correcto");
             }
+        }     
+
+        public void tomarConfirmacionGenReporte(object sender, EventArgs e)
+        {
+            gestor.tomarConfirmacionGenReporte();
         }
 
         public void mostrarVinos(List<List<string>> vinosParaExcel)
         {
-            
-            
-            for (int i = 0; i < 10;  i++)
+
+
+            for (int i = 0; i < 10; i++)
             {
                 DataGridViewRow fila = new DataGridViewRow();
                 DataGridViewTextBoxCell celdaNombre = new DataGridViewTextBoxCell();
@@ -148,15 +201,9 @@ namespace PPAI_DSI_2024
 
                 gdrVinos.Rows.Add(fila);
 
-                
+
             }
-            
-        }
 
-
-        public void tomarConfirmacionGenReporte(object sender, EventArgs e)
-        {
-            gestor.tomarConfirmacionGenReporte();
         }
 
         private void btnExportarExcel_Click(object sender, EventArgs e)
@@ -164,11 +211,23 @@ namespace PPAI_DSI_2024
             gestor.exportarExcel();
         }
 
-        private void btnLimpiarDatos_Click(object sender, EventArgs e)
+        public void confirmarExportacion()
+        {
+            MessageBox.Show("El excel se ha generado correctamente");
+        }
+
+        public void btnLimpiarDatos_Click(object sender, EventArgs e)
+        {
+            LimpiarDatos();
+        }
+
+        public void LimpiarDatos()
         {
             gdrVinos.Rows.Clear();
             mskFechaDesde.Text = "";
             mskFechaHasta.Text = "";
         }
+
+
     }
 }

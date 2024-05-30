@@ -112,7 +112,7 @@ namespace PPAI_DSI_2024.Entidades
             int sumaPuntajes = 0;
             for (int i = 0; i < resenas.Count; i++)
             {
-                if (resenas[i].SosDePeriodo(fechaDesde, fechaHasta) && resenas[i].essPremium())
+                if (resenas[i].SosDePeriodo(fechaDesde, fechaHasta) && resenas[i].SosDeSomellier())
                 {
                     cantResenas++;
                     sumaPuntajes += resenas[i].getPuntaje();

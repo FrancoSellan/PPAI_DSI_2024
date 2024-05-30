@@ -67,5 +67,17 @@ namespace PPAI_DSI_2024.Entidades
         {
             return puntaje;
         }
+
+        public bool SosDeSomellier()
+        {
+            if (esPremium)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

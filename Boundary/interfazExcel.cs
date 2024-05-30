@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PPAI_DSI_2024.Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,8 @@ namespace PPAI_DSI_2024.Boundary
 {
     public partial class interfazExcel : Form
     {
+
+        private List<Vino> listaOrdenadaVinos;
         public interfazExcel()
         {
             InitializeComponent();
@@ -24,7 +27,7 @@ namespace PPAI_DSI_2024.Boundary
 
         public void exportarExcel()
         {
-            MessageBox.Show("Excel generado correctamente");
+            MessageBox.Show("Se va a generar un excel con el ranking de los 10 vinos mejores calificados por somelliers.");
         }
     }
 }

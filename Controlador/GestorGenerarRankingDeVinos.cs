@@ -18,16 +18,15 @@ namespace PPAI_DSI_2024.Controlador
         private DateTime fechaHasta;
         private string tipoResena;
         private string tipoVisualizacion;
-        private Vino vino;
-        private List<Vino> listaVinos = new List<Vino>();
         private GeneradorDeDatos generadorDatos;
         private interfazExcel pantallaExcel;
-        //private Vino vinoEj;
-        //private Bodega BodegaVino;
-        //private RegionVitivinicola regionBodega;
-        //private Pais paisBodega;
-        //private Varietal varietalVino;
-        //private float puntajeSomelliers;
+        private Vino vino;
+        private string nombreBodega;
+        private string region;
+        private string pais;
+        private string varietal;
+        private int puntaje;
+        
 
         // Constructor
         public GestorGenerarRankingDeVinos (PantallaGenerarRankingDeVinos pantalla, DateTime fechaDesde, DateTime fechaHasta, string tipoResena, string tipoVisualizacion, interfazExcel pantallaExcel)
@@ -36,16 +35,9 @@ namespace PPAI_DSI_2024.Controlador
             this.fechaDesde = fechaDesde;
             this.fechaHasta = fechaHasta;
             this.tipoResena = tipoResena;
-            this.tipoVisualizacion = tipoVisualizacion;
-            this.vino = new Vino();
+            this.tipoVisualizacion = tipoVisualizacion;      
             this.generadorDatos = new GeneradorDeDatos();
             this.pantallaExcel = pantallaExcel;
-            //this.vinoEj = vino;
-            //this.BodegaVino = BodegaVino;
-            //this.regionBodega = regionBodega;
-            //this.paisBodega = paisBodega;
-            //this.varietalVino = varietalVino;
-            //this.puntajeSomelliers = puntajeSomelliers;
         }
 
         // Metodos get y set
@@ -53,24 +45,25 @@ namespace PPAI_DSI_2024.Controlador
         public DateTime FechaHasta { get => fechaHasta; set => fechaHasta = value; }
         public string TipoResena { get => tipoResena; set => tipoResena = value; }
         public string TipoVisualizacion { get => tipoVisualizacion; set => tipoVisualizacion = value; }
-        //public Bodega NombreBodegaVino { get => BodegaVino; set => BodegaVino = value; }
-        //public RegionVitivinicola RegionBodega { get => regionBodega; set => regionBodega = value; }
-        //public Pais PaisBodega { get => paisBodega; set => paisBodega = value; }
-        //public Varietal VarietalVino { get => varietalVino; set => varietalVino = value; }
-        //public float PuntajeSomelliers { get => puntajeSomelliers; set => puntajeSomelliers = value; }
-        //public Vino VinoEj { get => vinoEj; set => vinoEj = value; }
         public PantallaGenerarRankingDeVinos Pantalla { get => pantalla; set => pantalla = value; }
         public interfazExcel PantallaExcel { get => pantallaExcel; set => pantallaExcel = value; }
 
         public void opcionGenerarRankingDeVinos(PantallaGenerarRankingDeVinos pantalla)
         {
-            pantalla.pedirDatosRanking();
+            pantalla.solicitarSeleccionFechaDesdeYHasta();
         }
 
         public void tomarSeleccionFechaDesdeYHasta()
         {
-            fechaDesde = pantalla.tomarFechaDesde();
-            fechaHasta = pantalla.tomarFechaHasta();
+            if (pantalla.validarFechas())
+            {
+                fechaDesde = pantalla.tomarFechaDesde();
+                fechaHasta = pantalla.tomarFechaHasta();
+            } else
+            {
+                MessageBox.Show("Ingrese un periodo correcto");
+            }
+            
         }
 
 
@@ -89,13 +82,12 @@ namespace PPAI_DSI_2024.Controlador
             tomarSeleccionFechaDesdeYHasta();
             tomarTipoResena();
             tomarTipoVisualizacion();
-
-            if (fechaDesde != null && (fechaHasta > fechaDesde) && tipoResena == "De somellier" && tipoVisualizacion == "Excel")
+            if (pantalla.validarFechas() && tipoResena == "De somellier" && tipoVisualizacion == "Excel")
             {
                 MessageBox.Show("Reporte confirmado!");
+                pantalla.LimpiarDatos();
                buscarVinosConResenasEnPeriodo(fechaDesde, fechaHasta);
-
-            } else if (tipoResena != "De somellier" && tipoVisualizacion != "Excel")
+            }  else if (tipoResena != "De somellier" && tipoVisualizacion != "Excel")
             {
                 MessageBox.Show("No hay reseñas ni visualizacion disponibles");
             } else if (tipoVisualizacion != "Excel")
@@ -104,6 +96,9 @@ namespace PPAI_DSI_2024.Controlador
             } else if (tipoResena != "De somellier")
             {
                 MessageBox.Show("No hay reseñas disponibles");
+            } else if (fechaHasta < fechaDesde)
+            {
+                MessageBox.Show("Ingrese un periodo correcto");
             }
             
         }
@@ -111,7 +106,6 @@ namespace PPAI_DSI_2024.Controlador
         public void buscarVinosConResenasEnPeriodo(DateTime fechaDesde, DateTime fechaHasta)
         {
             List<List<string>> vinosParaExcel = new List<List<string>>();
-            // List<string> vinoParaExcel = new List<string>();
             List<Vino> vinosQueCumplenFiltros = new List<Vino>();
             List<Vino> vinos = generadorDatos.getVinos();
             for (int i = 0; i < vinos.Count; i++)
@@ -166,23 +160,13 @@ namespace PPAI_DSI_2024.Controlador
                     }
                 }
             }
-            // Metodo para acceder al arreglo dentro del otro arreglo (sirve para despues)
-            //for (int i = 0; i < vinosParaExcel.Count; i++)
-            //{
-            //    Console.WriteLine(vinosParaExcel[i][0]);
-            //    Console.WriteLine(vinosParaExcel[i][1]);
-            //    Console.WriteLine(vinosParaExcel[i][2]);
-            //    Console.WriteLine(vinosParaExcel[i][3]);
-            //    Console.WriteLine(vinosParaExcel[i][4]);
-            //    Console.WriteLine(vinosParaExcel[i][5]);
-            //    Console.WriteLine(vinosParaExcel[i][6]);
-            //}
 
         }
 
         public void exportarExcel()
         {
             pantallaExcel.exportarExcel();
+            pantalla.confirmarExportacion();
             finCU();
         }
 
