@@ -121,7 +121,9 @@ namespace PPAI_DSI_2024.Entidades
             }
 
             int promedio = calcularPuntajePromedio(sumaPuntajes, cantResenas);
+
             return promedio;
+           
         }
 
         public int calcularPuntajePromedio(int sumaPuntajes, int cantResenas)
