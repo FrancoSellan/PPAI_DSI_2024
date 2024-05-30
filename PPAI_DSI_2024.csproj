@@ -52,6 +52,12 @@
     <Compile Include="BonVino.Designer.cs">
       <DependentUpon>BonVino.cs</DependentUpon>
     </Compile>
+    <Compile Include="Boundary\interfazExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Boundary\interfazExcel.Designer.cs">
+      <DependentUpon>interfazExcel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Boundary\PantallaGenerarRankingDeVinos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +75,9 @@
     <Compile Include="Entidades\Vino.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Boundary\interfazExcel.resx">
+      <DependentUpon>interfazExcel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Boundary\PantallaGenerarRankingDeVinos.resx">
       <DependentUpon>PantallaGenerarRankingDeVinos.cs</DependentUpon>
     </EmbeddedResource>

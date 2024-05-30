@@ -1,4 +1,5 @@
-﻿using PPAI_DSI_2024.Datos;
+﻿using PPAI_DSI_2024.Boundary;
+using PPAI_DSI_2024.Datos;
 using PPAI_DSI_2024.Entidades;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace PPAI_DSI_2024.Controlador
         private Vino vino;
         private List<Vino> listaVinos = new List<Vino>();
         private GeneradorDeDatos generadorDatos;
+        private interfazExcel pantallaExcel;
         //private Vino vinoEj;
         //private Bodega BodegaVino;
         //private RegionVitivinicola regionBodega;
@@ -28,7 +30,7 @@ namespace PPAI_DSI_2024.Controlador
         //private float puntajeSomelliers;
 
         // Constructor
-        public GestorGenerarRankingDeVinos (PantallaGenerarRankingDeVinos pantalla, DateTime fechaDesde, DateTime fechaHasta, string tipoResena, string tipoVisualizacion)
+        public GestorGenerarRankingDeVinos (PantallaGenerarRankingDeVinos pantalla, DateTime fechaDesde, DateTime fechaHasta, string tipoResena, string tipoVisualizacion, interfazExcel pantallaExcel)
         {
             this.pantalla = pantalla;
             this.fechaDesde = fechaDesde;
@@ -37,6 +39,7 @@ namespace PPAI_DSI_2024.Controlador
             this.tipoVisualizacion = tipoVisualizacion;
             this.vino = new Vino();
             this.generadorDatos = new GeneradorDeDatos();
+            this.pantallaExcel = pantallaExcel;
             //this.vinoEj = vino;
             //this.BodegaVino = BodegaVino;
             //this.regionBodega = regionBodega;
@@ -57,7 +60,7 @@ namespace PPAI_DSI_2024.Controlador
         //public float PuntajeSomelliers { get => puntajeSomelliers; set => puntajeSomelliers = value; }
         //public Vino VinoEj { get => vinoEj; set => vinoEj = value; }
         public PantallaGenerarRankingDeVinos Pantalla { get => pantalla; set => pantalla = value; }
-
+        public interfazExcel PantallaExcel { get => pantallaExcel; set => pantallaExcel = value; }
 
         public void opcionGenerarRankingDeVinos(PantallaGenerarRankingDeVinos pantalla)
         {
@@ -141,7 +144,8 @@ namespace PPAI_DSI_2024.Controlador
                 
             }
 
-            ordenarVinos(vinosParaExcel);         
+            ordenarVinos(vinosParaExcel);
+            pantalla.mostrarVinos(vinosParaExcel);
         }
 
         public void ordenarVinos(List<List<string>> vinosParaExcel)
@@ -162,7 +166,7 @@ namespace PPAI_DSI_2024.Controlador
                     }
                 }
             }
-            //// Metodo para acceder al arreglo dentro del otro arreglo (sirve para despues)
+            // Metodo para acceder al arreglo dentro del otro arreglo (sirve para despues)
             //for (int i = 0; i < vinosParaExcel.Count; i++)
             //{
             //    Console.WriteLine(vinosParaExcel[i][0]);
@@ -176,6 +180,11 @@ namespace PPAI_DSI_2024.Controlador
 
         }
 
+        public void exportarExcel()
+        {
+            pantallaExcel.exportarExcel();
+            finCU();
+        }
 
         public bool validarFechaResena(DateTime fechaResena)
         {
@@ -188,6 +197,11 @@ namespace PPAI_DSI_2024.Controlador
             {
                 return false;
             }
+        }
+
+        public void finCU()
+        {
+            pantalla.Close();
         }
     }
 }

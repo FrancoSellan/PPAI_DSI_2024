@@ -37,6 +37,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cmbTiposVisualizacion = new System.Windows.Forms.ComboBox();
             this.btnConfirmacionGenReporte = new System.Windows.Forms.Button();
+            this.gdrVinos = new System.Windows.Forms.DataGridView();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreBodega = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreRegion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombrePais = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DescripcionVarietal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Puntaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnExportarExcel = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.gdrVinos)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -119,17 +129,90 @@
             // 
             this.btnConfirmacionGenReporte.Location = new System.Drawing.Point(20, 202);
             this.btnConfirmacionGenReporte.Name = "btnConfirmacionGenReporte";
-            this.btnConfirmacionGenReporte.Size = new System.Drawing.Size(114, 45);
+            this.btnConfirmacionGenReporte.Size = new System.Drawing.Size(114, 50);
             this.btnConfirmacionGenReporte.TabIndex = 8;
             this.btnConfirmacionGenReporte.Text = "Confirmar reporte";
             this.btnConfirmacionGenReporte.UseVisualStyleBackColor = true;
             this.btnConfirmacionGenReporte.Click += new System.EventHandler(this.tomarConfirmacionGenReporte);
             // 
+            // gdrVinos
+            // 
+            this.gdrVinos.AllowUserToAddRows = false;
+            this.gdrVinos.AllowUserToDeleteRows = false;
+            this.gdrVinos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gdrVinos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Nombre,
+            this.Precio,
+            this.NombreBodega,
+            this.NombreRegion,
+            this.NombrePais,
+            this.DescripcionVarietal,
+            this.Puntaje});
+            this.gdrVinos.Location = new System.Drawing.Point(390, 222);
+            this.gdrVinos.Name = "gdrVinos";
+            this.gdrVinos.ReadOnly = true;
+            this.gdrVinos.Size = new System.Drawing.Size(744, 322);
+            this.gdrVinos.TabIndex = 9;
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Precio
+            // 
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
+            // 
+            // NombreBodega
+            // 
+            this.NombreBodega.HeaderText = "NombreBodega";
+            this.NombreBodega.Name = "NombreBodega";
+            this.NombreBodega.ReadOnly = true;
+            // 
+            // NombreRegion
+            // 
+            this.NombreRegion.HeaderText = "NombreRegion";
+            this.NombreRegion.Name = "NombreRegion";
+            this.NombreRegion.ReadOnly = true;
+            // 
+            // NombrePais
+            // 
+            this.NombrePais.HeaderText = "NombrePais";
+            this.NombrePais.Name = "NombrePais";
+            this.NombrePais.ReadOnly = true;
+            // 
+            // DescripcionVarietal
+            // 
+            this.DescripcionVarietal.HeaderText = "DescripcionVarietal";
+            this.DescripcionVarietal.Name = "DescripcionVarietal";
+            this.DescripcionVarietal.ReadOnly = true;
+            // 
+            // Puntaje
+            // 
+            this.Puntaje.HeaderText = "Puntaje";
+            this.Puntaje.Name = "Puntaje";
+            this.Puntaje.ReadOnly = true;
+            // 
+            // btnExportarExcel
+            // 
+            this.btnExportarExcel.Location = new System.Drawing.Point(20, 284);
+            this.btnExportarExcel.Name = "btnExportarExcel";
+            this.btnExportarExcel.Size = new System.Drawing.Size(114, 55);
+            this.btnExportarExcel.TabIndex = 10;
+            this.btnExportarExcel.Text = "Exportar excel";
+            this.btnExportarExcel.UseVisualStyleBackColor = true;
+            this.btnExportarExcel.Click += new System.EventHandler(this.btnExportarExcel_Click);
+            // 
             // PantallaGenerarRankingDeVinos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1164, 579);
+            this.Controls.Add(this.btnExportarExcel);
+            this.Controls.Add(this.gdrVinos);
             this.Controls.Add(this.btnConfirmacionGenReporte);
             this.Controls.Add(this.cmbTiposVisualizacion);
             this.Controls.Add(this.label3);
@@ -143,6 +226,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PantallaGenerarRankingDeVinos";
             this.Load += new System.EventHandler(this.PantallaGenerarRankingDeVinos_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.gdrVinos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -159,5 +243,14 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbTiposVisualizacion;
         private System.Windows.Forms.Button btnConfirmacionGenReporte;
+        private System.Windows.Forms.DataGridView gdrVinos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombreBodega;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombreRegion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombrePais;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DescripcionVarietal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Puntaje;
+        private System.Windows.Forms.Button btnExportarExcel;
     }
 }
