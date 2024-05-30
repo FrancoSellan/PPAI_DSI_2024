@@ -141,22 +141,38 @@ namespace PPAI_DSI_2024.Controlador
                 
             }
 
-            // ordenarVinos(vinosParaExcel);
-            // Metodo para acceder al arreglo dentro del otro arreglo (sirve para despues)
-            for (int i = 0; i < vinosParaExcel.Count; i++)
-            {
-                Console.WriteLine(vinosParaExcel[i][0]);
-                Console.WriteLine(vinosParaExcel[i][1]);
-                Console.WriteLine(vinosParaExcel[i][2]);
-                Console.WriteLine(vinosParaExcel[i][3]);
-                Console.WriteLine(vinosParaExcel[i][4]);
-                Console.WriteLine(vinosParaExcel[i][5]);
-                Console.WriteLine(vinosParaExcel[i][6]);
-            }
+            ordenarVinos(vinosParaExcel);         
         }
 
         public void ordenarVinos(List<List<string>> vinosParaExcel)
         {
+            for (int i = 0; i < vinosParaExcel.Count - 1; i++)
+            {
+                for (int j = 0; j < vinosParaExcel.Count - 1 - i; j++)
+                {
+                    int puntaje1 = int.Parse(vinosParaExcel[j].Last());
+                    int puntaje2 = int.Parse(vinosParaExcel[j + 1].Last());
+
+                    if (puntaje1 < puntaje2)
+                    {
+                        // Intercambiar las sublistas
+                        List<string> temp = vinosParaExcel[j];
+                        vinosParaExcel[j] = vinosParaExcel[j + 1];
+                        vinosParaExcel[j + 1] = temp;
+                    }
+                }
+            }
+            //// Metodo para acceder al arreglo dentro del otro arreglo (sirve para despues)
+            //for (int i = 0; i < vinosParaExcel.Count; i++)
+            //{
+            //    Console.WriteLine(vinosParaExcel[i][0]);
+            //    Console.WriteLine(vinosParaExcel[i][1]);
+            //    Console.WriteLine(vinosParaExcel[i][2]);
+            //    Console.WriteLine(vinosParaExcel[i][3]);
+            //    Console.WriteLine(vinosParaExcel[i][4]);
+            //    Console.WriteLine(vinosParaExcel[i][5]);
+            //    Console.WriteLine(vinosParaExcel[i][6]);
+            //}
 
         }
 
