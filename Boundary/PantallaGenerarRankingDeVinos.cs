@@ -109,7 +109,7 @@ namespace PPAI_DSI_2024
         {
             
             
-            for (int i = 0; i < 4;  i++)
+            for (int i = 0; i < 10;  i++)
             {
                 DataGridViewRow fila = new DataGridViewRow();
                 DataGridViewTextBoxCell celdaNombre = new DataGridViewTextBoxCell();
@@ -119,6 +119,11 @@ namespace PPAI_DSI_2024
                 DataGridViewTextBoxCell celdaPais = new DataGridViewTextBoxCell();
                 DataGridViewTextBoxCell celdaVarietal = new DataGridViewTextBoxCell();
                 DataGridViewTextBoxCell celdaPuntaje = new DataGridViewTextBoxCell();
+
+                if (i >= vinosParaExcel.Count)
+                {
+                    break;
+                }
 
                 celdaNombre.Value = vinosParaExcel[i][0];
                 fila.Cells.Add(celdaNombre);
@@ -142,6 +147,8 @@ namespace PPAI_DSI_2024
                 fila.Cells.Add(celdaPuntaje);
 
                 gdrVinos.Rows.Add(fila);
+
+                
             }
             
         }
@@ -155,6 +162,13 @@ namespace PPAI_DSI_2024
         private void btnExportarExcel_Click(object sender, EventArgs e)
         {
             gestor.exportarExcel();
+        }
+
+        private void btnLimpiarDatos_Click(object sender, EventArgs e)
+        {
+            gdrVinos.Rows.Clear();
+            mskFechaDesde.Text = "";
+            mskFechaHasta.Text = "";
         }
     }
 }

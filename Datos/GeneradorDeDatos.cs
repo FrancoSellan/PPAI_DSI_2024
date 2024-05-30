@@ -66,15 +66,15 @@ namespace PPAI_DSI_2024.Datos
             Vino vino5 = new Vino(2000, Convert.ToDateTime("14/04/2005"), "imagen5", "vino5", 2, 2000, new List<Reseña>(), bodega1, varietal1);
             Vino vino6 = new Vino(2002, Convert.ToDateTime("14/04/2005"), "imagen6", "vino6", 4, 5500, new List<Reseña>(), bodega2, varietal2);
             Vino vino7 = new Vino(2019, Convert.ToDateTime("14/04/2005"), "imagen7", "vino7", 5, 6000, new List<Reseña>(), bodega5, varietal3);
-            //Vino vino8 = new Vino(2019, Convert.ToDateTime("14/04/2005"), "imagen8", "vino8", 5, 12000, new List<Reseña>(), bodega4, varietal4);
-            //Vino vino9 = new Vino(2019, Convert.ToDateTime("14/04/2005"), "imagen9", "vino9", 5, 5000, new List<Reseña>(), bodega3, varietal1);
-            //Vino vino10 = new Vino(2019, Convert.ToDateTime("14/04/2005"), "imagen10", "vino10", 5, 9000, new List<Reseña>(), bodega2, varietal2);
-            //Vino vino11 = new Vino(2019, Convert.ToDateTime("14/04/2005"), "imagen11", "vino11", 5, 20000, new List<Reseña>(), bodega1, varietal3);
-            //Vino vino12= new Vino(2019, Convert.ToDateTime("14/04/2005"), "imagen12", "vino12", 5, 7800, new List<Reseña>(), bodega5, varietal4);
-            //Vino vino13= new Vino(2019, Convert.ToDateTime("14/04/2005"), "imagen13", "vino13", 5, 4300, new List<Reseña>(), bodega4, varietal1);
-            //Vino vino14= new Vino(2019, Convert.ToDateTime("14/04/2005"), "imagen14", "vino14", 5, 13500, new List<Reseña>(), bodega3, varietal2);
+            Vino vino8 = new Vino(2019, Convert.ToDateTime("14/04/2005"), "imagen8", "vino8", 5, 12000, new List<Reseña>(), bodega4, varietal4);
+            Vino vino9 = new Vino(2019, Convert.ToDateTime("14/04/2005"), "imagen9", "vino9", 5, 5000, new List<Reseña>(), bodega3, varietal1);
+            Vino vino10 = new Vino(2019, Convert.ToDateTime("14/04/2005"), "imagen10", "vino10", 5, 9000, new List<Reseña>(), bodega2, varietal2);
+            Vino vino11 = new Vino(2019, Convert.ToDateTime("14/04/2005"), "imagen11", "vino11", 5, 20000, new List<Reseña>(), bodega1, varietal3);
+            Vino vino12= new Vino(2019, Convert.ToDateTime("14/04/2005"), "imagen12", "vino12", 5, 7800, new List<Reseña>(), bodega5, varietal4);
+            Vino vino13= new Vino(2019, Convert.ToDateTime("14/04/2005"), "imagen13", "vino13", 5, 4300, new List<Reseña>(), bodega4, varietal1);
+            Vino vino14= new Vino(2019, Convert.ToDateTime("14/04/2005"), "imagen14", "vino14", 5, 13500, new List<Reseña>(), bodega3, varietal2);
 
-            listaVinos = new List<Vino>() { vino1, vino2, vino3, vino4, vino5, vino6, vino7 };
+            listaVinos = new List<Vino>() { vino1, vino2, vino3, vino4, vino5, vino6, vino7, vino8, vino9, vino10, vino11, vino12, vino13, vino14 };
 
             // Reseñas
             Reseña resena1 = new Reseña("Excelente vino", true, Convert.ToDateTime("07/07/2018"), 9, vino3);
@@ -87,14 +87,24 @@ namespace PPAI_DSI_2024.Datos
             Reseña resena8 = new Reseña("Buen vino", false, Convert.ToDateTime("20/03/2023"), 9, vino4);
             Reseña resena9 = new Reseña("Excelente vino", true, Convert.ToDateTime("31/12/2021"), 9, vino3);
             Reseña resena10 = new Reseña("Mal vino", true, Convert.ToDateTime("24/06/2023"), 4, vino7);
-            //Reseña resena11 = new Reseña("Mal vino", true, Convert.ToDateTime("24/06/2023"), 4, vino7);
-            //Reseña resena12 = new Reseña("Mal vino", false, Convert.ToDateTime("24/06/2023"), 4, vino7);
-            //Reseña resena13 = new Reseña("Mal vino", true, Convert.ToDateTime("24/06/2023"), 4, vino7);
-            //Reseña resena14 = new Reseña("Mal vino", true, Convert.ToDateTime("24/06/2023"), 4, vino7);
-            //Reseña resena15 = new Reseña("Mal vino", false, Convert.ToDateTime("24/06/2023"), 4, vino7);
-            //Reseña resena16 = new Reseña("Mal vino", true, Convert.ToDateTime("24/06/2023"), 4, vino7);
+            Reseña resena11 = new Reseña("Mal vino", true, Convert.ToDateTime("24/06/2023"), 8, vino8);
+            Reseña resena12 = new Reseña("Mal vino", true, Convert.ToDateTime("24/06/2023"), 5, vino9);
+            Reseña resena13 = new Reseña("Mal vino", true, Convert.ToDateTime("24/06/2023"), 9, vino8);
+            Reseña resena14 = new Reseña("Mal vino", true, Convert.ToDateTime("24/06/2023"), 4, vino8);
+            Reseña resena15 = new Reseña("Mal vino", true, Convert.ToDateTime("24/06/2023"), 8, vino9);
+            Reseña resena16 = new Reseña("Mal vino", true, Convert.ToDateTime("24/06/2023"), 2, vino10);
+            Reseña resena17 = new Reseña("Mal vino", true, Convert.ToDateTime("24/06/2023"), 10, vino11);
+            Reseña resena18 = new Reseña("Mal vino", true, Convert.ToDateTime("24/06/2023"), 8, vino11);
+            Reseña resena19 = new Reseña("Mal vino", true, Convert.ToDateTime("24/06/2023"), 7, vino11);
+            Reseña resena20 = new Reseña("Mal vino", true, Convert.ToDateTime("24/06/2023"), 7, vino12);
+            Reseña resena21 = new Reseña("Mal vino", true, Convert.ToDateTime("24/06/2023"), 5, vino12);
+            Reseña resena22 = new Reseña("Mal vino", true, Convert.ToDateTime("24/06/2023"), 2, vino13);
+            Reseña resena23 = new Reseña("Mal vino", true, Convert.ToDateTime("24/06/2023"), 3, vino13);
+            Reseña resena24 = new Reseña("Mal vino", true, Convert.ToDateTime("24/06/2023"), 10, vino14);
+            Reseña resena25 = new Reseña("Mal vino", true, Convert.ToDateTime("24/06/2023"), 8, vino14);
 
-            resenas = new List<Reseña>() { resena1, resena2, resena3, resena4, resena5, resena6, resena7, resena8, resena9, resena10 };
+
+            resenas = new List<Reseña>() { resena1, resena2, resena3, resena4, resena5, resena6, resena7, resena8, resena9, resena10, resena11, resena12, resena13, resena14, resena15, resena16, resena17, resena18, resena19, resena20, resena21, resena22, resena23, resena24, resena25 };
 
             vino3.resenas.Add(resena1);
             vino4.resenas.Add(resena2);
@@ -106,26 +116,21 @@ namespace PPAI_DSI_2024.Datos
             vino4.resenas.Add(resena8);
             vino3.resenas.Add(resena9);
             vino7.resenas.Add(resena10);
-            //vino8.resenas.Add(resena1);
-            //vino9.resenas.Add(resena2);
-            //vino10.resenas.Add(resena3);
-            //vino11.resenas.Add(resena4);
-            //vino12.resenas.Add(resena5);
-            //vino13.resenas.Add(resena6);
-            //vino14.resenas.Add(resena7);
-            //vino8.resenas.Add(resena10);
-            //vino8.resenas.Add(resena5);
-            //vino9.resenas.Add(resena4);
-            //vino10.resenas.Add(resena6);
-            //vino10.resenas.Add(resena9);
-            //vino11.resenas.Add(resena10);
-            //vino11.resenas.Add(resena1);
-            //vino12.resenas.Add(resena2);
-            //vino13.resenas.Add(resena3);
-            //vino13.resenas.Add(resena9);
-            //vino14.resenas.Add(resena10);
-            //vino14.resenas.Add(resena1);
-            //vino14.resenas.Add(resena4);
+            vino8.resenas.Add(resena11);
+            vino8.resenas.Add(resena13);
+            vino8.resenas.Add(resena14);
+            vino9.resenas.Add(resena12);
+            vino9.resenas.Add(resena15);
+            vino10.resenas.Add(resena16);
+            vino11.resenas.Add(resena17);
+            vino11.resenas.Add(resena18);
+            vino11.resenas.Add(resena19);
+            vino12.resenas.Add(resena20);
+            vino12.resenas.Add(resena21);
+            vino13.resenas.Add(resena22);
+            vino13.resenas.Add(resena23);
+            vino14.resenas.Add(resena24);
+            vino14.resenas.Add(resena25);
 
         }
 

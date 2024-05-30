@@ -46,16 +46,17 @@
             this.DescripcionVarietal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Puntaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnExportarExcel = new System.Windows.Forms.Button();
+            this.btnLimpiarDatos = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gdrVinos)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Leelawadee", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(463, 20);
+            this.label1.Size = new System.Drawing.Size(438, 19);
             this.label1.TabIndex = 0;
             this.label1.Text = "Ingrese fechaDesde y fechaHasta de consideracion de reseñas:";
             // 
@@ -90,10 +91,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Leelawadee", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 90);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(172, 20);
+            this.label2.Size = new System.Drawing.Size(165, 19);
             this.label2.TabIndex = 4;
             this.label2.Text = "Ingrese tipo de reseña:";
             // 
@@ -109,10 +110,10 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Leelawadee", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(16, 146);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(399, 20);
+            this.label3.Size = new System.Drawing.Size(393, 19);
             this.label3.TabIndex = 6;
             this.label3.Text = "Ingrese un tipo de visualziacion para generar el reporte:";
             // 
@@ -127,6 +128,7 @@
             // 
             // btnConfirmacionGenReporte
             // 
+            this.btnConfirmacionGenReporte.Font = new System.Drawing.Font("Leelawadee", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirmacionGenReporte.Location = new System.Drawing.Point(20, 202);
             this.btnConfirmacionGenReporte.Name = "btnConfirmacionGenReporte";
             this.btnConfirmacionGenReporte.Size = new System.Drawing.Size(114, 50);
@@ -198,6 +200,7 @@
             // 
             // btnExportarExcel
             // 
+            this.btnExportarExcel.Font = new System.Drawing.Font("Leelawadee", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExportarExcel.Location = new System.Drawing.Point(20, 284);
             this.btnExportarExcel.Name = "btnExportarExcel";
             this.btnExportarExcel.Size = new System.Drawing.Size(114, 55);
@@ -206,11 +209,24 @@
             this.btnExportarExcel.UseVisualStyleBackColor = true;
             this.btnExportarExcel.Click += new System.EventHandler(this.btnExportarExcel_Click);
             // 
+            // btnLimpiarDatos
+            // 
+            this.btnLimpiarDatos.Font = new System.Drawing.Font("Leelawadee", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiarDatos.Location = new System.Drawing.Point(20, 365);
+            this.btnLimpiarDatos.Name = "btnLimpiarDatos";
+            this.btnLimpiarDatos.Size = new System.Drawing.Size(114, 55);
+            this.btnLimpiarDatos.TabIndex = 11;
+            this.btnLimpiarDatos.Text = "Limpiar datos";
+            this.btnLimpiarDatos.UseVisualStyleBackColor = true;
+            this.btnLimpiarDatos.Click += new System.EventHandler(this.btnLimpiarDatos_Click);
+            // 
             // PantallaGenerarRankingDeVinos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FloralWhite;
             this.ClientSize = new System.Drawing.Size(1164, 579);
+            this.Controls.Add(this.btnLimpiarDatos);
             this.Controls.Add(this.btnExportarExcel);
             this.Controls.Add(this.gdrVinos);
             this.Controls.Add(this.btnConfirmacionGenReporte);
@@ -252,5 +268,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DescripcionVarietal;
         private System.Windows.Forms.DataGridViewTextBoxColumn Puntaje;
         private System.Windows.Forms.Button btnExportarExcel;
+        private System.Windows.Forms.Button btnLimpiarDatos;
     }
 }
